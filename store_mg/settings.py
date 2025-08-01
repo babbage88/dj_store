@@ -11,7 +11,19 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+import socket
 
+djhostname = socket.gethostname()
+DB_NAME = os.getenv("DB_NAME", "djstore")
+DB_HOSTNAME = os.getenv("DB_HOSTNAME", djhostname)
+DB_USER = os.getenv("DB_USER", "djdev")
+DB_PASS = os.getenv("DB_PASS")
+DB_PORT = os.getenv("DB_PORT", "5432")
+
+
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -84,8 +96,12 @@ WSGI_APPLICATION = "store_mg.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": DB_NAME,
+        "USER": DB_USER,
+        "PASSWORD": DB_PASS,
+        "HOST": DB_HOSTNAME,
+        "PORT": DB_PORT,
     }
 }
 

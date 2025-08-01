@@ -1,5 +1,6 @@
 # Python-generated files
 db.sqlite3
+.env
 __pycache__/
 *.py[oc]
 build/
