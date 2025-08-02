@@ -42,6 +42,7 @@ ALLOWED_HOSTS = [
     "djstore.trahan.dev",
     "127.0.0.1",
     "10.0.0.32",
+    "10.0.1.44",
     "10.0.0.32:8899",
     "10.0.0.33",
     "localhost",
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "store_mg"
 ]
 
 MIDDLEWARE = [
