@@ -1,0 +1,31 @@
+{
+"SELECT id, name, sku, category, description, unit_price, quantity_in_stock, image_url, is_active, created_at, updated_at, custom_category_id\nFROM public.store_mg_inventoryitem": [
+	{
+		"id" : 1,
+		"name" : "GBP-RPL",
+		"sku" : "1234567",
+		"category" : "Vape Device",
+		"description" : "Geek Bar Pulse - Raspberry Peach Lime",
+		"unit_price" : 20.99,
+		"quantity_in_stock" : 10,
+		"image_url" : "https:\/\/minio.trahan.dev\/devtest\/images\/geekbar_rpl.png",
+		"is_active" : true,
+		"created_at" : "2025-08-02T13:33:59.855Z",
+		"updated_at" : "2025-08-02T13:33:59.855Z",
+		"custom_category_id" : null
+	},
+	{
+		"id" : 2,
+		"name" : "GBP-MM",
+		"sku" : "1234567-1",
+		"category" : "Vape Device",
+		"description" : "Geek Bar Pulse - Miami Mint",
+		"unit_price" : 20.99,
+		"quantity_in_stock" : 10,
+		"image_url" : "https:\/\/minio.trahan.dev\/devtest\/images\/miami-mint-pulse-x.jpg",
+		"is_active" : true,
+		"created_at" : "2025-08-02T13:37:40.798Z",
+		"updated_at" : "2025-08-02T13:37:40.799Z",
+		"custom_category_id" : null
+	}
+]}

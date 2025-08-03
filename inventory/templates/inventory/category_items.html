@@ -1,0 +1,24 @@
+<!-- templates/inventory/category_items.html -->
+
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ category.name }} Products</h2>
+  <div class="row mt-3">
+    {% for item in items %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          {% if item.image_url %}
+            <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">${{ item.unit_price }}</p>
+            <a href="{% url 'inventory:product_detail' item.pk %}" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

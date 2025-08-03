@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from django.db import models
 
 
@@ -14,28 +13,12 @@ class InventoryCategory(models.Model):
 
 
 class InventoryItem(models.Model):
-    class PredefinedCategory(models.TextChoices):
-        KRATOM = "Kratom", "Kratom"
-        NITROUS = "Nitrous", "Nitrous"
-        NICOTINE_JUICE = "Nicotine Juice", "Nicotine Juice"
-        VAPE_DEVICE = "Vape Device", "Vape Device"
-        ACCESSORY = "Accessory", "Accessory"
-        DELTA8 = "Delta-8", "Delta-8"
-        OTHER = "Other", "Other"
-
     name = models.CharField(max_length=100)
     sku = models.CharField(max_length=32, unique=True, help_text="Unique stock keeping unit or barcode")
-    category = models.CharField(
-        max_length=32,
-        choices=PredefinedCategory.choices,
-        default=PredefinedCategory.OTHER
-    )
-    custom_category = models.ForeignKey(
+    category = models.ForeignKey(
         InventoryCategory,
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        help_text="Optional custom category if not using predefined ones"
+        on_delete=models.PROTECT,
+        help_text="Product category"
     )
     description = models.TextField(blank=True)
     unit_price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -52,9 +35,10 @@ class InventoryItem(models.Model):
             models.Index(fields=["sku"]),
             models.Index(fields=["category"]),
         ]
-        unique_together = [("name", "category")]
         ordering = ["name"]
+        constraints = [
+            models.UniqueConstraint(fields=["name", "category"], name="unique_item_per_category"),
+        ]
 
     def __str__(self):
         return f"{self.name} ({self.category})"
-
