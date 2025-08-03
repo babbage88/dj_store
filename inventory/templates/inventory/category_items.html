@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-4">
-  <h2>{{ category.name }} Products</h2>
+  <h2>{{ category.display_name }} - Products</h2>
   <div class="row mt-3">
     {% for item in items %}
       <div class="col-md-4 mb-4">

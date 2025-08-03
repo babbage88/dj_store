@@ -43,6 +43,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "10.0.0.32",
     "10.0.1.44",
+    "10.0.1.39",
     "10.0.0.32:8899",
     "10.0.0.33",
     "localhost",
@@ -79,7 +80,7 @@ ROOT_URLCONF = "store_mg.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")], 
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

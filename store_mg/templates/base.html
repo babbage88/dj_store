@@ -39,7 +39,7 @@
                 {% for category in categories %}
                 <li>
                   <a class="dropdown-item" href="{% url 'inventory:category_items' category.name %}">
-                    {{ category.name }}
+                    {{ category.display_name }}
                   </a>
                 </li>
                 {% endfor %}

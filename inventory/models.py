@@ -3,6 +3,7 @@ from django.db import models
 
 class InventoryCategory(models.Model):
     name = models.CharField(max_length=50, unique=True)
+    display_name = models.TextField(blank=True)
 
     class Meta:
         verbose_name_plural = "Inventory Categories"
@@ -42,3 +43,4 @@ class InventoryItem(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.category})"
+
