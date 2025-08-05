@@ -11,17 +11,26 @@ def home(request):
         "featured_items": featured_items,
     })
 
+
 def category_items(request, slug):
     category = get_object_or_404(InventoryCategory, name__iexact=slug)
-    items = InventoryItem.objects.filter(category=category, is_active=True)
+    items = InventoryItem.objects.filter(
+        item_type__category=category,
+        is_active=True
+    ).select_related("item_type")
 
     return render(request, "inventory/category_items.html", {
         "category": category,
         "items": items,
     })
 
+
 def product_detail(request, pk):
-    item = get_object_or_404(InventoryItem, pk=pk, is_active=True)
+    item = get_object_or_404(
+        InventoryItem.objects.select_related("item_type__category"),
+        pk=pk,
+        is_active=True
+    )
     return render(request, "inventory/product_detail.html", {
         "item": item
     })
