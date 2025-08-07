@@ -26,7 +26,7 @@ router.register(r'inventory-items', views.InventoryItemSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('inventory.urls', 'inventory'), namespace='inventory')),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api/', include('api.urls'))
 
 
 ]

@@ -63,10 +63,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "store_mg",
     "inventory",
+    "corsheaders",
     "rest_framework",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -96,6 +98,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "store_mg.wsgi.application"
 
+
+# CORS
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "htt://localhost:3000",
+    "http://localhost:5173",
+    "https://localhost:5173",
+]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://localhost$",
+]
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
